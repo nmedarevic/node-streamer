@@ -1,6 +1,6 @@
 # node-streamer
 
-##A simple example of streaming data from one server to another
+## A simple example of streaming data from one server to another
 
 Run `npm install` for both `data_reader` and `data_source`.
 
