@@ -23,7 +23,8 @@ function contentDisposition(filename) {
 
 
 app.get('/:id', (req, res) => {
-  const filePath = process.cwd() + '/data_source/public/lorem.json';
+  const currentPath = process.cwd();
+  const filePath = currentPath + (currentPath.includes('data_source') ? '' : '/data_source') + '/public/lorem.json';
   md5(filePath).then(hash => {
     const sizeInBytes = fs.statSync(filePath).size;
     res.writeHead(200, {

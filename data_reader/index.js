@@ -8,8 +8,13 @@ const clearEvents = (emmitters) => emmitters.forEach(emmitter => emmitter.remove
 
 const md5Cb = (res, writeStream) => (hash) => {
   if (hash === res.headers['x-hash']) {
-    writeStream.close();
-    clearEvents([writeStream, res]);
+    writeStream.end(() => {
+      clearEvents([writeStream, res]);
+      console.log('Hash good');
+    });
+    
+  } else {
+    console.log('Bad hash')
   }
 };
 
